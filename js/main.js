@@ -43,10 +43,11 @@ function generatePlayerChoice(){
 function playRound(playerSelection){
     computerSelection = getComputerChoice();
     console.log(`Computer chooses: ${computerSelection}\n`);
-    playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection == computerSelection){
         return "Draw!";
+    } else if(playerSelection == null){
+        return "Something went wrong!";
     } else if (playerSelection == "rock" && computerSelection == "paper"){
         return "You Lose! Paper beats Rock";
     } else if(playerSelection == "paper" && computerSelection == "rock"){
@@ -60,15 +61,20 @@ function playRound(playerSelection){
     } else {
         return "You Lose! Scissors beats Paper";
     }
+   
 }
 
 //plays 5 rounds of RSP
 function game(){
+    
     for (let i = 0; i < 5; i++){
         let header = `Round ${i+1} begin! \n`;
         console.log(header);
-        let playerPick = generatePlayerChoice();
+
+        let playerPick = prompt("rock, paper, or scissors?");
+        playerPick = playerPick.toLowerCase();
         console.log(`Player chooses: ${playerPick}\n`);
+
         console.log(playRound(playerPick));
         console.log("\n\n");
     }
