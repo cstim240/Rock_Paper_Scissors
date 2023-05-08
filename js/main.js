@@ -25,24 +25,6 @@ function getComputerChoice(){
     }
 }
 
-function generatePlayerChoice(){
-    let playerChoiceNum = Math.floor(Math.random() * 3);
-    
-    switch (playerChoiceNum){
-        case 0: 
-            return "rock";
-            break;
-        case 1: 
-            return "paper";
-            break;
-        case 2:
-            return "scissors";
-            break;
-        default:
-            return "Something went wrong";
-    }
-}
-
 function playRound(playerSelection){
     const computerSelection = getComputerChoice();
     console.log(`Computer chooses: ${computerSelection}\n`);
@@ -72,11 +54,11 @@ function playRound(playerSelection){
     }
 
     if (userScore == 5){
-        playerWin();
+        winMsg("player");
         disableButtons();
     } 
     if (botScore == 5){
-        botWin();
+        winMsg("computer");
         disableButtons();
     }
 }
@@ -109,19 +91,13 @@ function addComputerScore(botScore){
     return botScore;
 }
 
-function playerWin(){
+function winMsg(winner){
     const endResult = document.querySelector(".endResult");
     const p = document.createElement('p');
     p.classList.add('resultmsg');
-    p.textContent = "You won against the computer! Woooooo!";
-    endResult.appendChild(p);
-}
 
-function botWin(){
-    const endResult = document.querySelector(".endResult");
-    const p = document.createElement('p');
-    p.classList.add('resultmsg');
-    p.textContent = "You LOST against the computer! Haha loser!";
+    p.textContent = (winner == "player") ? "You won against the computer! Woooooo!" : 
+    "You LOST against the computer! Haha loser!"; //ternary op
     endResult.appendChild(p);
 }
 
@@ -145,7 +121,23 @@ function reset(){
 
 }
 
-
+/*function generatePlayerChoice(){
+    let playerChoiceNum = Math.floor(Math.random() * 3);
+    
+    switch (playerChoiceNum){
+        case 0: 
+            return "rock";
+            break;
+        case 1: 
+            return "paper";
+            break;
+        case 2:
+            return "scissors";
+            break;
+        default:
+            return "Something went wrong";
+    }
+}*/
 
 //plays 5 rounds of RSP
 /*function simulateMatch(){
