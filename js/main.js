@@ -73,18 +73,26 @@ function playRound(playerSelection){
 
     if (userScore == 5){
         playerWin();
+        disableButtons();
     } 
     if (botScore == 5){
         botWin();
+        disableButtons();
     }
+}
 
-    if (userScore >= 5 || botScore >= 5){
-        document.querySelector("#rock").disabled = true;
-        document.querySelector("#paper").disabled = true;
-        document.querySelector("#scissors").disabled = true;
-    } else if (document.querySelector("#rock").disabled == true){
-        return;
-    }
+function disableButtons(){
+    const btns = document.querySelectorAll(".buttons");
+    btns.forEach(btn => {
+        btn.disabled = true;
+    });
+}
+
+function enableButtons(){
+    const btns = document.querySelectorAll(".buttons");
+    btns.forEach(btn => {
+        btn.disabled = false;
+    });
 }
 
 function addPlayerScore(userScore){
@@ -133,9 +141,7 @@ function reset(){
         endResult.removeChild(resultmsg);
     }
 
-    document.querySelector("#rock").disabled = false;
-    document.querySelector("#paper").disabled = false;
-    document.querySelector("#scissors").disabled = false;
+    enableButtons();
 
 }
 
