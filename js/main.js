@@ -41,31 +41,32 @@ function generatePlayerChoice(){
 }
 
 function playRound(playerSelection){
-    computerSelection = getComputerChoice();
+    const computerSelection = getComputerChoice();
     console.log(`Computer chooses: ${computerSelection}\n`);
+    console.log(`Player chose: ${playerSelection}\n`);
+    const matchResult = document.querySelector(".matchResult");
 
     if (playerSelection == computerSelection){
-        return "Draw!";
-    } else if(playerSelection == null){
-        return "Something went wrong!";
+        matchResult.textContent = "Draw!";
     } else if (playerSelection == "rock" && computerSelection == "paper"){
-        return "You Lose! Paper beats Rock";
+        matchResult.textContent = "You Lose! Paper beats Rock";
     } else if(playerSelection == "paper" && computerSelection == "rock"){
-        return "You Win! Paper beats Rock"
+        matchResult.textContent = "You Win! Paper beats Rock";
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
-        return "You Win! Rock beats Scissors";
+        matchResult.textContent = "You Win! Rock beats Scissors";
     } else if(playerSelection == "scissors" && computerSelection == "rock"){
-        return "You Lose! Rock beats Scissors";
+        matchResult.textContent = "You Lose! Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
-        return "You Win! Scissors beats Paper";
+        matchResult.textContent = "You Win! Scissors beats Paper";
     } else {
-        return "You Lose! Scissors beats Paper";
+        matchResult.textContent = "You Lose! Scissors beats Paper";
     }
-   
 }
 
+
+
 //plays 5 rounds of RSP
-function game(){
+/*function simulateMatch(){
     
     for (let i = 0; i < 5; i++){
         let header = `Round ${i+1} begin! \n`;
@@ -78,4 +79,4 @@ function game(){
         console.log(playRound(playerPick));
         console.log("\n\n");
     }
-}
+}*/
