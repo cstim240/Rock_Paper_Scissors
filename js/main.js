@@ -4,6 +4,9 @@
     Date: May 2, 2023
 */
 
+let userScore = 0;
+let botScore = 0;
+
 function getComputerChoice(){
     let computerChoiceNum = Math.floor(Math.random() * 3);
     
@@ -49,18 +52,91 @@ function playRound(playerSelection){
     if (playerSelection == computerSelection){
         matchResult.textContent = "Draw!";
     } else if (playerSelection == "rock" && computerSelection == "paper"){
+        botScore = addComputerScore(botScore);
         matchResult.textContent = "You Lose! Paper beats Rock";
     } else if(playerSelection == "paper" && computerSelection == "rock"){
         matchResult.textContent = "You Win! Paper beats Rock";
+        userScore = addPlayerScore(userScore);
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
+        userScore = addPlayerScore(userScore);
         matchResult.textContent = "You Win! Rock beats Scissors";
     } else if(playerSelection == "scissors" && computerSelection == "rock"){
+        botScore = addComputerScore(botScore);
         matchResult.textContent = "You Lose! Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
+        userScore = addPlayerScore(userScore);
         matchResult.textContent = "You Win! Scissors beats Paper";
     } else {
+        botScore = addComputerScore(botScore);
         matchResult.textContent = "You Lose! Scissors beats Paper";
     }
+
+    if (userScore == 5){
+        playerWin();
+    } 
+    if (botScore == 5){
+        botWin();
+    }
+
+    if (userScore >= 5 || botScore >= 5){
+        document.querySelector("#rock").disabled = true;
+        document.querySelector("#paper").disabled = true;
+        document.querySelector("#scissors").disabled = true;
+    } else if (document.querySelector("#rock").disabled == true){
+        return;
+    }
+}
+
+function addPlayerScore(userScore){
+    let playerScore = document.querySelector(".playerScore");
+    playerScore.textContent = `${++userScore}`;
+    console.log(userScore);
+    return userScore;
+}
+
+function addComputerScore(botScore){
+    let computerScore = document.querySelector(".compScore");
+    computerScore.textContent = `${++botScore}`;
+    console.log(botScore);
+    return botScore;
+}
+
+function playerWin(){
+    const endResult = document.querySelector(".endResult");
+    const p = document.createElement('p');
+    p.classList.add('resultmsg');
+    p.textContent = "You won against the computer! Woooooo!";
+    endResult.appendChild(p);
+}
+
+function botWin(){
+    const endResult = document.querySelector(".endResult");
+    const p = document.createElement('p');
+    p.classList.add('resultmsg');
+    p.textContent = "You LOST against the computer! Haha loser!";
+    endResult.appendChild(p);
+}
+
+function reset(){
+    userScore = 0;
+    botScore = 0;
+    let playerScore = document.querySelector(".playerScore");
+    playerScore.textContent = `${userScore}`;
+    let computerScore = document.querySelector(".compScore");
+    computerScore.textContent = `${botScore}`;
+    const matchResult = document.querySelector(".matchResult");
+    matchResult.textContent = "";
+
+    const endResult = document.querySelector(".endResult");
+    const resultmsg = document.querySelector(".resultmsg");
+    if (resultmsg){
+        endResult.removeChild(resultmsg);
+    }
+
+    document.querySelector("#rock").disabled = false;
+    document.querySelector("#paper").disabled = false;
+    document.querySelector("#scissors").disabled = false;
+
 }
 
 

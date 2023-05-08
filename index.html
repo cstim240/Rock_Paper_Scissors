@@ -13,14 +13,20 @@
     </head>
     <body>
         <div>
-            <button value="rock" onclick="playRound(this.value)">Rock</button>
-            <button value="paper" onclick="playRound(this.value)">Paper</button>
-            <button value="scissors" onclick="playRound(this.value)">Scissors</button>
+            <p>Choose one of the three! First to 5 points wins!</p>
+            <button id="rock" value="rock" onclick="playRound(this.value)">Rock</button>
+            <button id="paper" value="paper" onclick="playRound(this.value)">Paper</button>
+            <button id="scissors" value="scissors" onclick="playRound(this.value)">Scissors</button>
+            <button onclick="reset()">Reset</button>
         </div>
 
         <div>
             <p>Your score: </p>
+            <p class="playerScore"></p>
+            <br/>
             <p>Bot's score: </p>
+            <p class="compScore"></p>
+            <br/>
         </div>
 
         <div>
@@ -28,7 +34,7 @@
             <p class="matchResult"></p>
         </div>
 
-        <div>
+        <div class="endResult">
             <p> End result: </p>
         </div>
 
