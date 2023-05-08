@@ -68,7 +68,9 @@ function playRound(playerSelection){
     if (botScore == 5){
         winMsg("computer");
         disableButtons();
+        
     }
+    
 }
 function matchResultImg(option){
     const img = document.querySelector(".matchResultImg");
@@ -154,6 +156,9 @@ function winMsg(winner){
     }
     endResult.appendChild(p);
     endResult.appendChild(img);
+    img.scrollIntoView({
+        behaviour: "smooth"
+    });
 }
 
 function reset(){
@@ -174,6 +179,7 @@ function reset(){
         endResult.removeChild(resultimg);
     }
 
+    matchResultImg("draw");
     restoreBanner();
     enableButtons();
     window.scrollTo(0,0); //moves browser view to the top of page
