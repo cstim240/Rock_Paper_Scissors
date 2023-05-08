@@ -73,7 +73,8 @@ body {
 
 .endStat .matchHistory {
     display: flex;
-    align-self: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .endStat .endResult {
@@ -86,4 +87,6 @@ body {
     height: 25%;
     width: 25%;
 }
+
+
 

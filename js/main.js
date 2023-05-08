@@ -33,24 +33,31 @@ function playRound(playerSelection){
     const matchResult = document.querySelector(".matchResult");
 
     if (playerSelection == computerSelection){
+        matchResultImg("draw");
         matchResult.textContent = "Draw!";
     } else if (playerSelection == "rock" && computerSelection == "paper"){
         botScore = addComputerScore(botScore);
+        matchResultImg("paper");
         matchResult.textContent = "You Lose! Paper beats Rock";
     } else if(playerSelection == "paper" && computerSelection == "rock"){
-        matchResult.textContent = "You Win! Paper beats Rock";
         userScore = addPlayerScore(userScore);
+        matchResultImg("paper");
+        matchResult.textContent = "You Win! Paper beats Rock";
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
         userScore = addPlayerScore(userScore);
+        matchResultImg("rock");
         matchResult.textContent = "You Win! Rock beats Scissors";
     } else if(playerSelection == "scissors" && computerSelection == "rock"){
         botScore = addComputerScore(botScore);
+        matchResultImg("rock");
         matchResult.textContent = "You Lose! Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "paper"){
         userScore = addPlayerScore(userScore);
+        matchResultImg("scissors");
         matchResult.textContent = "You Win! Scissors beats Paper";
     } else {
         botScore = addComputerScore(botScore);
+        matchResultImg("scissors");
         matchResult.textContent = "You Lose! Scissors beats Paper";
     }
 
@@ -61,6 +68,18 @@ function playRound(playerSelection){
     if (botScore == 5){
         winMsg("computer");
         disableButtons();
+    }
+}
+function matchResultImg(option){
+    const img = document.querySelector(".matchResultImg");
+    if (option == "rock"){
+       img.src = "./images/rockWin.jpg";
+    } else if (option == "paper"){
+        img.src = "./images/paperWin.jpg";
+    } else if (option == "scissors") {
+        img.src = "./images/scissors.jpg";
+    } else if (option == "draw"){
+        img.src = "";
     }
 }
 
