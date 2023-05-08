@@ -26,6 +26,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection){
+    removeBanner();
     const computerSelection = getComputerChoice();
     console.log(`Computer chooses: ${computerSelection}\n`);
     console.log(`Player chose: ${playerSelection}\n`);
@@ -63,6 +64,30 @@ function playRound(playerSelection){
     }
 }
 
+function removeBanner(){
+    const header = document.querySelector(".header");
+    const scenario = document.querySelector(".scenario");
+    if (scenario){
+        header.removeChild(scenario);
+    } else {
+        return;
+    }
+}
+
+function restoreBanner(){
+    const header = document.querySelector(".header");
+    const scenario = document.querySelector(".scenario");
+    
+    if (scenario){
+        return;
+    } else {
+        const img = document.createElement("img");
+        img.classList.add("scenario");
+        img.src = "./images/openScene.jpg";
+        header.appendChild(img);
+    }
+}
+
 function disableButtons(){
     const btns = document.querySelectorAll(".buttons");
     btns.forEach(btn => {
@@ -80,14 +105,14 @@ function enableButtons(){
 function addPlayerScore(userScore){
     let playerScore = document.querySelector(".playerScore");
     playerScore.textContent = `${++userScore}`;
-    console.log(userScore);
+    console.log(`User score is: ${userScore}`);
     return userScore;
 }
 
 function addComputerScore(botScore){
     let computerScore = document.querySelector(".compScore");
     computerScore.textContent = `${++botScore}`;
-    console.log(botScore);
+    console.log(`Bot score is: ${botScore}`);
     return botScore;
 }
 
@@ -96,9 +121,20 @@ function winMsg(winner){
     const p = document.createElement('p');
     p.classList.add('resultmsg');
 
-    p.textContent = (winner == "player") ? "You won against the computer! Woooooo!" : 
-    "You LOST against the computer! Haha loser!"; //ternary op
+    const img = document.createElement("img");
+    
+    if (winner == "player"){
+        p.textContent = "You won against him! Have fun in prison, Jack!";
+        img.src = "./images/playerWin.jpg";
+        img.classList.add('resultimg');
+
+    } else {
+        p.textContent = "You LOST against Jack! Now your dog is sad!"; 
+        img.src = "./images/playerLoss.jpg";
+        img.classList.add('resultimg');
+    }
     endResult.appendChild(p);
+    endResult.appendChild(img);
 }
 
 function reset(){
@@ -113,12 +149,15 @@ function reset(){
 
     const endResult = document.querySelector(".endResult");
     const resultmsg = document.querySelector(".resultmsg");
+    const resultimg = document.querySelector(".resultimg");
     if (resultmsg){
         endResult.removeChild(resultmsg);
+        endResult.removeChild(resultimg);
     }
 
+    restoreBanner();
     enableButtons();
-
+    window.scrollTo(0,0); //moves browser view to the top of page
 }
 
 /*function generatePlayerChoice(){

@@ -14,34 +14,51 @@
         
     </head>
     <body>
-        <div>
+        <div class="header">
             <p>Jack just kicked your dog! Beat him in match of rock, paper, scissors to send him to jail!</p>
-            <img src=""/>
+            <img class="scenario" src="./images/openScene.jpg"/>
         </div>
-        <div>
+
+        <div class="mainSec">
             <p>Choose one of the three! First to 5 points wins!</p>
-            <button class="buttons" value="rock" onclick="playRound(this.value)">Rock</button>
-            <button class="buttons" value="paper" onclick="playRound(this.value)">Paper</button>
-            <button class="buttons" value="scissors" onclick="playRound(this.value)">Scissors</button>
+            <div class="options">
+                <button class="buttons" value="rock" onclick="playRound(this.value)">
+                    <img src="./images/rock.jpg"/>
+                </button>
+                <button class="buttons" value="paper" onclick="playRound(this.value)">
+                    <img src="./images/paper.jpg"/>
+                </button>
+                <button class="buttons" value="scissors" onclick="playRound(this.value)">
+                    <img src="./images/scissors.jpg"/>
+                </button>
+            </div>
+        </div>
+
+        <div class="resetBtn"> 
             <button onclick="reset()">Reset</button>
         </div>
 
-        <div>
-            <p>Your score: </p>
-            <p class="playerScore"></p>
-            <br/>
-            <p>Bot's score: </p>
-            <p class="compScore"></p>
-            <br/>
+        <div class="statBoard">
+            <div class="playerStat">
+                <p>Your score: </p>
+                <p class="playerScore"></p>
+            </div>
+
+            <div class="compStat">
+                <p>Bot's score: </p>
+                <p class="compScore"></p>
+            </div>
         </div>
 
-        <div>
-            <p>Match result: </p>
-            <p class="matchResult"></p>
-        </div>
-
-        <div class="endResult">
-            <p> End result: </p>
+        <div class="endStat">
+            <div class="matchHistory">
+                <p>Match result: </p>
+                <p class="matchResult"></p>
+            </div>
+    
+            <div class="endResult">
+                <p> End result: </p>
+            </div>
         </div>
 
     </body>

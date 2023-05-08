@@ -4,3 +4,86 @@
     Date: May 8, 2023
 */
 
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #faf6ed;
+    flex: 1 1 auto;
+    color: #545351;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size:large;
+}
+
+.header img {
+    width: 25%;
+    height: 25%;
+}
+
+.mainSec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10%;
+}
+
+.options button {
+    border-radius: 20%;
+    padding: 10px;
+    background: none;
+}
+
+.options img {
+    width: 150px;
+    height: 150px;
+}
+
+.resetBtn {
+    margin: 20px;
+    align-self: center;
+}
+
+.statBoard {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.playerStat {
+    display: flex;
+}
+
+.compStat {
+    display: flex;
+}
+
+.endStat {
+    display: flex;
+    flex-direction: column;
+}
+
+.endStat .matchHistory {
+    display: flex;
+    align-self: center;
+}
+
+.endStat .endResult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultimg {
+    height: 25%;
+    width: 25%;
+}
+
