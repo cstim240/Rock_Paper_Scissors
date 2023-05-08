@@ -79,7 +79,7 @@ function matchResultImg(option){
     } else if (option == "paper"){
         img.src = "./images/paperWin.jpg";
     } else if (option == "scissors") {
-        img.src = "./images/scissors.jpg";
+        img.src = "./images/scissorWin.jpg";
     } else if (option == "draw"){
         img.src = "";
     }
