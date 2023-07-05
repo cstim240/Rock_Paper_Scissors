@@ -1,5 +1,5 @@
 # Rock_Paper_Scissors
-From the Odin Project: a rock, paper, scissor game built from HTML, CSS, and JavaScript
+From the Odin Project: a rock, paper, scissor game built from HTML, CSS, and JavaScript.
 Visit this site here: https://cstim240.github.io/Rock_Paper_Scissors/
 
 A functional rock, paper, scissors game with artwork made by Tim Supan. Please let me know if you spot any bugs. 
